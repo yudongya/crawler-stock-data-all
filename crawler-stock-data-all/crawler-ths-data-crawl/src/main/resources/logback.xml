@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true" scanPeriod="4 seconds">
+
+<!--    <appender name="ERRORLOG" class="com.springboot.appender.ErrorLogMonitorHttpAppender">-->
+<!--        <url>http://localhost:8080/api/v1/logback/log</url>-->
+<!--        <env>test</env>-->
+<!--        <localSystemName>someOneProjectName</localSystemName>-->
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+<!--            <level>ERROR</level>-->
+<!--        </filter>-->
+<!--        <encoder charset="UTF-8">-->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | %X{tracker_id} | %X{localIp} |[%t]:[%p]|[%c:%L] - %m %n</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+
+    <!--包含调用者信息的日志-->
+<!--    <appender name="FILE" class="ch.qos.logback.core.FileAppender">-->
+<!--        <file>/Users/shuai/Desktop/myIncludeCallerData.log</file>-->
+<!--        <encoder>-->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | %X{tracker_id} | %X{localIp} |[%t]:[%p]|[%c:%L] - %m %n</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+<!--    <appender name="CONSOLE_ASYNC_FILE_TRUE" class="ch.qos.logback.classic.AsyncAppender">-->
+<!--        <discardingThreshold>3000</discardingThreshold>-->
+<!--        <queueSize>10000</queueSize>-->
+<!--        &lt;!&ndash;获取调用者的信息配置&ndash;&gt;-->
+<!--        <includeCallerData>true</includeCallerData>-->
+<!--        <appender-ref ref="FILE"/>-->
+<!--    </appender>-->
+<!--    &lt;!&ndash;引用CONSOLE_ASYNC_FILE_TRUE，并命名为includeCallerData，在程序中获取&ndash;&gt;-->
+<!--    <logger name="includeCallerData" level="info">-->
+<!--        <appender-ref ref="CONSOLE_ASYNC_FILE_TRUE"/>-->
+<!--    </logger>-->
+
+<!--    &lt;!&ndash;不包含调用者信息的日志&ndash;&gt;-->
+<!--    <appender name="FILE_NO" class="ch.qos.logback.core.FileAppender">-->
+<!--        <file>/Users/shuai/Desktop/my.log</file>-->
+<!--        <encoder>-->
+<!--            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | %X{tracker_id} | %X{localIp} |[%t]:[%p]|[%c:%L] - %m %n</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+<!--    <appender name="CONSOLE_ASYNC_FILE_FALSE" class="ch.qos.logback.classic.AsyncAppender">-->
+<!--        <discardingThreshold>3000</discardingThreshold>-->
+<!--        <queueSize>10000</queueSize>-->
+<!--        <appender-ref ref="FILE_NO"/>-->
+<!--    </appender>-->
+<!--    &lt;!&ndash;引用CONSOLE_ASYNC_FILE_FALSE，并命名为notIncludeCallerData，在程序中获取&ndash;&gt;-->
+<!--    <logger name="notIncludeCallerData" level="info">-->
+<!--        <appender-ref ref="CONSOLE_ASYNC_FILE_FALSE"/>-->
+<!--    </logger>-->
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} | %X{tracker_id} | %X{localIp} |[%t]:[%p]|[%c:%L] - %m %n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="info">
+        <appender-ref ref="STDOUT" />
+    </root>
+</configuration>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>crawler-stock-data-group</groupId>
+    <artifactId>crawler-stock-data-all</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>crawler-ths-data-crawl</module>
+        <module>crawler-ths-data-parse</module>
+        <module>crawler-ths-data-service</module>
+        <module>crawler-ths-data-parent</module>
+    </modules>
+
+</project>

@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ths.dao.StockThsGnInfoDao">
+
+	<resultMap id="StockThsGnInfo" type="com.ths.domain.StockThsGnInfo" >
+		<result column="id" property="id"/>
+		<result column="gn_name" property="gnName"/>
+		<result column="gn_code" property="gnCode"/>
+		<result column="stock_code" property="stockCode"/>
+		<result column="stock_name" property="stockName"/>
+		<result column="stock_price" property="stockPrice"/>
+		<result column="stock_change" property="stockChange"/>
+		<result column="stock_change_price" property="stockChangePrice"/>
+		<result column="stock_change_speed" property="stockChangeSpeed"/>
+		<result column="stock_handover_scale" property="stockHandoverScale"/>
+		<result column="stock_liang_bi" property="stockLiangBi"/>
+		<result column="stock_amplitude" property="stockAmplitude"/>
+		<result column="stock_deal_amount" property="stockDealAmount"/>
+		<result column="stock_flow_stock_number" property="stockFlowStockNumber"/>
+		<result column="stock_flow_makert_value" property="stockFlowMakertValue"/>
+		<result column="stock_market_ttm" property="stockMarketTtm"/>
+		<result column="crawler_time" property="crawlerTime"/>
+		<result column="crawler_version" property="crawlerVersion"/>
+		<result column="some_ext" property="someExt"/>
+		<result column="create_time" property="createTime"/>
+		<result column="update_time" property="updateTime"/>
+	</resultMap>
+
+	<!-- 通用查询结果列-->
+	<sql id="Base_Column_List">
+		id,
+		gn_name,
+		gn_code,
+		stock_code,
+		stock_name,
+		stock_price,
+		stock_change,
+		stock_change_price,
+		stock_change_speed,
+		stock_handover_scale,
+		stock_liang_bi,
+		stock_amplitude,
+		stock_deal_amount,
+		stock_flow_stock_number,
+		stock_flow_makert_value,
+		stock_market_ttm,
+		crawler_time,
+		crawler_version,
+		some_ext,
+		create_time,
+		update_time
+	</sql>
+
+	<!-- 查询（根据主键ID查询） -->
+	<select id="selectByPrimaryKey" resultMap="StockThsGnInfo" parameterType="java.lang.Long">
+		 SELECT
+		 <include refid="Base_Column_List" />
+		 FROM stock_ths_gn_info
+		 WHERE id = #{id}
+	</select>
+
+	<!--删除：根据主键ID删除-->
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+		 DELETE FROM stock_ths_gn_info
+		 WHERE id = #{id}
+	</delete>
+
+	<!-- 添加 -->
+	<insert id="insert" parameterType="com.ths.domain.StockThsGnInfo">
+		 INSERT INTO stock_ths_gn_info
+ 		(
+			 id,
+			 gn_name,
+			 gn_code,
+			 stock_code,
+			 stock_name,
+			 stock_price,
+			 stock_change,
+			 stock_change_price,
+			 stock_change_speed,
+			 stock_handover_scale,
+			 stock_liang_bi,
+			 stock_amplitude,
+			 stock_deal_amount,
+			 stock_flow_stock_number,
+			 stock_flow_makert_value,
+			 stock_market_ttm,
+			 crawler_time,
+			 crawler_version,
+			 some_ext,
+			 create_time,
+			 update_time
+		) 
+		 VALUES 
+ 		(
+			 #{id},
+			 #{gnName},
+			 #{gnCode},
+			 #{stockCode},
+			 #{stockName},
+			 #{stockPrice},
+			 #{stockChange},
+			 #{stockChangePrice},
+			 #{stockChangeSpeed},
+			 #{stockHandoverScale},
+			 #{stockLiangBi},
+			 #{stockAmplitude},
+			 #{stockDealAmount},
+			 #{stockFlowStockNumber},
+			 #{stockFlowMakertValue},
+			 #{stockMarketTtm},
+			 #{crawlerTime},
+			 #{crawlerVersion},
+			 #{someExt},
+			 #{createTime},
+			 #{updateTime}
+ 		) 
+		 <selectKey keyProperty="id" resultType="Long" order="AFTER">
+			 select LAST_INSERT_ID()
+		 </selectKey>
+	</insert>
+
+	<!-- 修 改-->
+	<update id="updateByPrimaryKeySelective" parameterType="com.ths.domain.StockThsGnInfo">
+		 UPDATE stock_ths_gn_info
+ 		 <set> 
+			<if test="gnName != null and gnName != ''">
+				 gn_name = #{gnName},
+			</if>
+			<if test="gnCode != null and gnCode != ''">
+				 gn_code = #{gnCode},
+			</if>
+			<if test="stockCode != null and stockCode != ''">
+				 stock_code = #{stockCode},
+			</if>
+			<if test="stockName != null and stockName != ''">
+				 stock_name = #{stockName},
+			</if>
+			<if test="stockPrice != null">
+				 stock_price = #{stockPrice},
+			</if>
+			<if test="stockChange != null">
+				 stock_change = #{stockChange},
+			</if>
+			<if test="stockChangePrice != null">
+				 stock_change_price = #{stockChangePrice},
+			</if>
+			<if test="stockChangeSpeed != null">
+				 stock_change_speed = #{stockChangeSpeed},
+			</if>
+			<if test="stockHandoverScale != null">
+				 stock_handover_scale = #{stockHandoverScale},
+			</if>
+			<if test="stockLiangBi != null">
+				 stock_liang_bi = #{stockLiangBi},
+			</if>
+			<if test="stockAmplitude != null">
+				 stock_amplitude = #{stockAmplitude},
+			</if>
+			<if test="stockDealAmount != null">
+				 stock_deal_amount = #{stockDealAmount},
+			</if>
+			<if test="stockFlowStockNumber != null">
+				 stock_flow_stock_number = #{stockFlowStockNumber},
+			</if>
+			<if test="stockFlowMakertValue != null">
+				 stock_flow_makert_value = #{stockFlowMakertValue},
+			</if>
+			<if test="stockMarketTtm != null">
+				 stock_market_ttm = #{stockMarketTtm},
+			</if>
+			<if test="crawlerTime != null and crawlerTime != ''">
+				 crawler_time = #{crawlerTime},
+			</if>
+			<if test="crawlerVersion != null and crawlerVersion != ''">
+				 crawler_version = #{crawlerVersion},
+			</if>
+			<if test="someExt != null and someExt != ''">
+				 some_ext = #{someExt},
+			</if>
+			<if test="createTime != null">
+				 create_time = #{createTime},
+			</if>
+			<if test="updateTime != null">
+				 update_time = #{updateTime},
+			</if>
+
+ 		 </set>
+		 WHERE id = #{id}
+	</update>
+
+	<!-- list4Page 分页查询-->
+	<select id="list4Page" resultMap="StockThsGnInfo">
+		 SELECT 
+		 <include refid="Base_Column_List" />
+		 from stock_ths_gn_info
+ 		 where 1=1  
+		<if test="record.id != null">
+			 and id = #{record.id} 
+		</if>
+		<if test="record.gnName != null and record.gnName != ''">
+			 and gn_name = #{record.gnName} 
+		</if>
+		<if test="record.gnCode != null and record.gnCode != ''">
+			 and gn_code = #{record.gnCode} 
+		</if>
+		<if test="record.stockCode != null and record.stockCode != ''">
+			 and stock_code = #{record.stockCode} 
+		</if>
+		<if test="record.stockName != null and record.stockName != ''">
+			 and stock_name = #{record.stockName} 
+		</if>
+		<if test="record.stockPrice != null">
+			 and stock_price = #{record.stockPrice} 
+		</if>
+		<if test="record.stockChange != null">
+			 and stock_change = #{record.stockChange} 
+		</if>
+		<if test="record.stockChangePrice != null">
+			 and stock_change_price = #{record.stockChangePrice} 
+		</if>
+		<if test="record.stockChangeSpeed != null">
+			 and stock_change_speed = #{record.stockChangeSpeed} 
+		</if>
+		<if test="record.stockHandoverScale != null">
+			 and stock_handover_scale = #{record.stockHandoverScale} 
+		</if>
+		<if test="record.stockLiangBi != null">
+			 and stock_liang_bi = #{record.stockLiangBi} 
+		</if>
+		<if test="record.stockAmplitude != null">
+			 and stock_amplitude = #{record.stockAmplitude} 
+		</if>
+		<if test="record.stockDealAmount != null">
+			 and stock_deal_amount = #{record.stockDealAmount} 
+		</if>
+		<if test="record.stockFlowStockNumber != null">
+			 and stock_flow_stock_number = #{record.stockFlowStockNumber} 
+		</if>
+		<if test="record.stockFlowMakertValue != null">
+			 and stock_flow_makert_value = #{record.stockFlowMakertValue} 
+		</if>
+		<if test="record.stockMarketTtm != null">
+			 and stock_market_ttm = #{record.stockMarketTtm} 
+		</if>
+		<if test="record.crawlerTime != null and record.crawlerTime != ''">
+			 and crawler_time = #{record.crawlerTime} 
+		</if>
+		<if test="record.crawlerVersion != null and record.crawlerVersion != ''">
+			 and crawler_version = #{record.crawlerVersion} 
+		</if>
+		<if test="record.someExt != null and record.someExt != ''">
+			 and some_ext = #{record.someExt} 
+		</if>
+		<if test="record.createTime != null">
+			 and create_time = #{record.createTime} 
+		</if>
+		<if test="record.updateTime != null">
+			 and update_time = #{record.updateTime} 
+		</if>
+		<if test="commonQueryParam != null">
+			<if test="commonQueryParam.start != null  and commonQueryParam.pageSize != null">
+				 limit #{commonQueryParam.start}, #{commonQueryParam.pageSize}
+			</if>
+		</if>
+	</select>
+	<!-- count 总数-->
+	<select id="count" resultType="long">
+		 SELECT 
+		 count(1) 
+		 from stock_ths_gn_info
+ 		 where 1=1  
+		<if test="record.id != null">
+			 and id = #{record.id} 
+		</if>
+		<if test="record.gnName != null and record.gnName != ''">
+			 and gn_name = #{record.gnName} 
+		</if>
+		<if test="record.gnCode != null and record.gnCode != ''">
+			 and gn_code = #{record.gnCode} 
+		</if>
+		<if test="record.stockCode != null and record.stockCode != ''">
+			 and stock_code = #{record.stockCode} 
+		</if>
+		<if test="record.stockName != null and record.stockName != ''">
+			 and stock_name = #{record.stockName} 
+		</if>
+		<if test="record.stockPrice != null">
+			 and stock_price = #{record.stockPrice} 
+		</if>
+		<if test="record.stockChange != null">
+			 and stock_change = #{record.stockChange} 
+		</if>
+		<if test="record.stockChangePrice != null">
+			 and stock_change_price = #{record.stockChangePrice} 
+		</if>
+		<if test="record.stockChangeSpeed != null">
+			 and stock_change_speed = #{record.stockChangeSpeed} 
+		</if>
+		<if test="record.stockHandoverScale != null">
+			 and stock_handover_scale = #{record.stockHandoverScale} 
+		</if>
+		<if test="record.stockLiangBi != null">
+			 and stock_liang_bi = #{record.stockLiangBi} 
+		</if>
+		<if test="record.stockAmplitude != null">
+			 and stock_amplitude = #{record.stockAmplitude} 
+		</if>
+		<if test="record.stockDealAmount != null">
+			 and stock_deal_amount = #{record.stockDealAmount} 
+		</if>
+		<if test="record.stockFlowStockNumber != null">
+			 and stock_flow_stock_number = #{record.stockFlowStockNumber} 
+		</if>
+		<if test="record.stockFlowMakertValue != null">
+			 and stock_flow_makert_value = #{record.stockFlowMakertValue} 
+		</if>
+		<if test="record.stockMarketTtm != null">
+			 and stock_market_ttm = #{record.stockMarketTtm} 
+		</if>
+		<if test="record.crawlerTime != null and record.crawlerTime != ''">
+			 and crawler_time = #{record.crawlerTime} 
+		</if>
+		<if test="record.crawlerVersion != null and record.crawlerVersion != ''">
+			 and crawler_version = #{record.crawlerVersion} 
+		</if>
+		<if test="record.someExt != null and record.someExt != ''">
+			 and some_ext = #{record.someExt} 
+		</if>
+		<if test="record.createTime != null">
+			 and create_time = #{record.createTime} 
+		</if>
+		<if test="record.updateTime != null">
+			 and update_time = #{record.updateTime} 
+		</if>
+	</select>
+	<!-- list 查询-->
+	<select id="list" resultMap="StockThsGnInfo">
+		 SELECT 
+		 <include refid="Base_Column_List" />
+		 from stock_ths_gn_info
+ 		 where 1=1  
+		<if test="record.id != null">
+			 and id = #{record.id} 
+		</if>
+		<if test="record.gnName != null and record.gnName != ''">
+			 and gn_name = #{record.gnName} 
+		</if>
+		<if test="record.gnCode != null and record.gnCode != ''">
+			 and gn_code = #{record.gnCode} 
+		</if>
+		<if test="record.stockCode != null and record.stockCode != ''">
+			 and stock_code = #{record.stockCode} 
+		</if>
+		<if test="record.stockName != null and record.stockName != ''">
+			 and stock_name = #{record.stockName} 
+		</if>
+		<if test="record.stockPrice != null">
+			 and stock_price = #{record.stockPrice} 
+		</if>
+		<if test="record.stockChange != null">
+			 and stock_change = #{record.stockChange} 
+		</if>
+		<if test="record.stockChangePrice != null">
+			 and stock_change_price = #{record.stockChangePrice} 
+		</if>
+		<if test="record.stockChangeSpeed != null">
+			 and stock_change_speed = #{record.stockChangeSpeed} 
+		</if>
+		<if test="record.stockHandoverScale != null">
+			 and stock_handover_scale = #{record.stockHandoverScale} 
+		</if>
+		<if test="record.stockLiangBi != null">
+			 and stock_liang_bi = #{record.stockLiangBi} 
+		</if>
+		<if test="record.stockAmplitude != null">
+			 and stock_amplitude = #{record.stockAmplitude} 
+		</if>
+		<if test="record.stockDealAmount != null">
+			 and stock_deal_amount = #{record.stockDealAmount} 
+		</if>
+		<if test="record.stockFlowStockNumber != null">
+			 and stock_flow_stock_number = #{record.stockFlowStockNumber} 
+		</if>
+		<if test="record.stockFlowMakertValue != null">
+			 and stock_flow_makert_value = #{record.stockFlowMakertValue} 
+		</if>
+		<if test="record.stockMarketTtm != null">
+			 and stock_market_ttm = #{record.stockMarketTtm} 
+		</if>
+		<if test="record.crawlerTime != null and record.crawlerTime != ''">
+			 and crawler_time = #{record.crawlerTime} 
+		</if>
+		<if test="record.crawlerVersion != null and record.crawlerVersion != ''">
+			 and crawler_version = #{record.crawlerVersion} 
+		</if>
+		<if test="record.someExt != null and record.someExt != ''">
+			 and some_ext = #{record.someExt} 
+		</if>
+		<if test="record.createTime != null">
+			 and create_time = #{record.createTime} 
+		</if>
+		<if test="record.updateTime != null">
+			 and update_time = #{record.updateTime} 
+		</if>
+	</select>
+</mapper>
